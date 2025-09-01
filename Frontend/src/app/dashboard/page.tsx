@@ -1,15 +1,13 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import BorrowerPipeline from '@/components/BorrowerPipeline'
 import BorrowerDetail from '@/components/BorrowerDetail'
 import BrokerOverview from '@/components/BrokerOverview'
-import { Search, HelpCircle, Bell, ChevronDown, ChevronUp } from 'lucide-react'
+import { Search, HelpCircle, Bell } from 'lucide-react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
 const DashboardPage: React.FC = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -18,9 +16,9 @@ const DashboardPage: React.FC = () => {
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold text-foreground">DemoApp</h1>
             <div className="flex items-center space-x-4">
-              <Search className="h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
-              <HelpCircle className="h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
-              <Bell className="h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
+              <Search data-testid="search-icon" className="h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
+              <HelpCircle data-testid="help-icon" className="h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
+              <Bell data-testid="bell-icon" className="h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Badge } from '@/components/ui/badge'
@@ -67,10 +67,7 @@ const BorrowerPipeline: React.FC = () => {
 
   return (
     <Card className="h-full">
-      <CardHeader className="pb-4">
-        <CardTitle className="text-lg font-semibold">Borrower Pipeline</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 pt-6">
         <Tabs value={activeTab} onValueChange={handleTabChange}>
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="new">New</TabsTrigger>

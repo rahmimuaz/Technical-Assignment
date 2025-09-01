@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { useAppStore } from '@/store/useAppStore'
 import { api } from '@/services/api'
-import { AlertTriangle, Phone, Mail, MessageCircle } from 'lucide-react'
+import { AlertTriangle, Phone, Mail } from 'lucide-react'
 
 const BorrowerDetail: React.FC = () => {
   const { activeBorrower } = useAppStore()
@@ -78,9 +78,19 @@ const BorrowerDetail: React.FC = () => {
       <CardHeader>
         <div className="flex justify-between items-start">
           <div className="space-y-2">
-            <CardTitle className="text-xl font-bold">{activeBorrower.name}</CardTitle>
-            <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-              <span className="flex items-center">
+          <div className="flex items-center justify-between">
+  <CardTitle className="text-xl font-bold">
+    {activeBorrower.name}
+  </CardTitle>
+  <Badge
+    variant={getStatusVariant(activeBorrower.status)}
+    className="text-xs"
+  >
+    {activeBorrower.status}
+  </Badge>
+</div>
+            <div className="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 text-sm text-muted-foreground">
+            <span className="flex items-center">
                 <Mail className="h-4 w-4 mr-1" />
                 {activeBorrower.email}
               </span>
@@ -93,9 +103,7 @@ const BorrowerDetail: React.FC = () => {
               ${activeBorrower.loan_amount.toLocaleString()}
             </div>
           </div>
-          <Badge variant={getStatusVariant(activeBorrower.status)} className="text-sm">
-            {activeBorrower.status}
-          </Badge>
+
         </div>
       </CardHeader>
       <CardContent className="space-y-6">

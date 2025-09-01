@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Toggle } from '@/components/ui/toggle'
 import { useAppStore } from '@/store/useAppStore'
 import { api } from '@/services/api'
-import { Phone, Mail, MessageCircle, CheckCircle, Clock } from 'lucide-react'
+import { Phone, Mail, MessageCircle, CheckCircle, Clock, Bot, Sparkles, Settings } from 'lucide-react'
 
 const BrokerOverview: React.FC = () => {
   const {
@@ -38,6 +38,11 @@ const BrokerOverview: React.FC = () => {
   const handleContact = (method: string) => {
     console.log(`Contacting broker via ${method}`)
     // In a real app, this would open email client, phone dialer, or chat interface
+  }
+
+  const handleAiToggle = () => {
+    toggleAiAssistant()
+    console.log(`AI Assistant ${aiAssistantEnabled ? 'disabled' : 'enabled'}`)
   }
 
   if (!brokerInfo || !onboardingWorkflow) {
@@ -149,18 +154,88 @@ const BrokerOverview: React.FC = () => {
         </CardContent>
       </Card>
 
-      {/* AI Assistant Card */}
-      <Card>
+      {/* Enhanced AI Assistant Card */}
+      <Card className={`transition-all duration-300 ${aiAssistantEnabled ? 'ai-assistant-active' : ''}`}>
         <CardHeader>
-          <CardTitle className="text-lg font-semibold">AI Assistant</CardTitle>
+          <CardTitle className="text-lg font-semibold flex items-center space-x-2">
+            <Bot className={`h-5 w-5 transition-colors duration-300 ${aiAssistantEnabled ? 'text-blue-600 ai-status-indicator' : 'text-gray-400'}`} />
+            <span>AI Assistant</span>
+            {aiAssistantEnabled && (
+              <Sparkles className="h-4 w-4 text-blue-500 ai-sparkle" />
+            )}
+          </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-foreground">E Ardsassist</span>
-            <Toggle
-              pressed={aiAssistantEnabled}
-              onPressedChange={toggleAiAssistant}
-            />
+          <div className="space-y-4">
+            {/* Main Toggle Section */}
+            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2">
+                  <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    aiAssistantEnabled ? 'bg-green-500 ai-status-indicator' : 'bg-gray-300'
+                  }`} />
+                  <span className="text-sm font-medium text-gray-700">E Ardsassist</span>
+                </div>
+                {aiAssistantEnabled && (
+                  <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">
+                    Active
+                  </span>
+                )}
+              </div>
+              <Toggle
+                pressed={aiAssistantEnabled}
+                onPressedChange={handleAiToggle}
+                className={`transition-all duration-300 ${
+                  aiAssistantEnabled 
+                    ? 'bg-blue-600 hover:bg-blue-700 data-[state=on]:bg-blue-600' 
+                    : 'bg-gray-200 hover:bg-gray-300'
+                }`}
+              />
+            </div>
+
+            {/* Status and Features */}
+            <div className={`transition-all duration-300 ${aiAssistantEnabled ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+              <div className="space-y-3 pt-2 border-t border-gray-200">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-600">Status</span>
+                  <span className="text-green-600 font-medium">Ready to assist</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-600">Response Time</span>
+                  <span className="text-blue-600 font-medium">~2 seconds</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-600">Features</span>
+                  <span className="text-purple-600 font-medium">Smart Analysis</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Actions */}
+            {aiAssistantEnabled && (
+              <div className="pt-2 border-t border-gray-200">
+                <div className="flex space-x-2">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="flex-1 text-xs"
+                    onClick={() => console.log('AI Settings opened')}
+                  >
+                    <Settings className="h-3 w-3 mr-1" />
+                    Settings
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="flex-1 text-xs"
+                    onClick={() => console.log('AI Help opened')}
+                  >
+                    <Sparkles className="h-3 w-3 mr-1" />
+                    Help
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>

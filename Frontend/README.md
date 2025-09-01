@@ -1,149 +1,197 @@
 # DemoApp - Frontend Developer Task
 
-A modern React application built with Next.js, TypeScript, and Tailwind CSS for managing borrower pipelines and loan processing workflows.
+A modern React application for managing borrower pipelines and loan processing workflows, built with Next.js, TypeScript, Tailwind CSS, and ShadCN UI components.
 
-## 🚀 Features
+## 🚀 Features Implemented
 
-- **3-Column Responsive Layout**: Desktop grid layout that stacks on mobile
-- **Borrower Pipeline Management**: Tabs for New, In Review, and Approved borrowers
-- **AI Explainability**: Expandable section showing AI flags and risk signals
-- **Broker Overview**: Statistics and contact information
-- **Onboarding Workflow**: Step-by-step process tracking
-- **Interactive Actions**: Request documents, send to valuer, approve loans, escalate
-- **Modern UI Components**: Built with ShadCN UI and Tailwind CSS
+### ✅ Core Requirements Met
 
-## 🛠️ Tech Stack
+- **3-Column Responsive Layout**: Desktop grid layout with mobile-first responsive design
+- **Header**: "DemoApp" title with search, help, and notification icons
+- **Borrower Pipeline (Left Panel)**:
+  - Tabs for "New", "In Review", "Approved" statuses
+  - Borrower cards with name, loan type, amount, and status badges
+  - Interactive borrower selection
+  - F-SANATISED ACTIVE radio section
+- **Borrower Details (Center Panel)**:
+  - Borrower header with name, email, phone, loan amount, and status badge
+  - AI Explainability accordion with warning flags
+  - Action buttons (Request Documents, Send to Valuer, Approve)
+  - Loan summary with employment, existing loan, credit score, source of funds
+  - Risk signal warnings with icons
+  - Prominent "Escalate to Credit Committee" button
+- **Broker Overview (Right Panel)**:
+  - Broker information with stats (deals, approval rate, pending amount)
+  - Functional contact buttons (Call, Email, Chat)
+  - Onboarding workflow with completion markers
+  - AI Assistant toggle
 
-- **Framework**: Next.js 14 with App Router
+### 🎨 Design & UX
+
+- **Modern UI**: Clean, professional design using ShadCN UI components
+- **Color-coded Status Badges**: Visual indicators for different loan statuses
+- **Interactive Elements**: Hover effects, transitions, and proper feedback
+- **Mobile Responsive**: Collapsible broker overview on mobile devices
+- **Accessibility**: Proper ARIA labels and keyboard navigation
+
+### 🧪 Testing
+
+- **Cypress E2E Tests**: Comprehensive test suite covering all major functionality
+- **Console Logging**: Action buttons log appropriate messages for testing
+- **Test Coverage**: Borrower selection, tab switching, accordion interactions, button clicks
+
+## 🛠️ Technical Stack
+
+- **Framework**: Next.js 15.5.2 with React 19
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS + ShadCN UI
+- **Styling**: Tailwind CSS 3.4.0
+- **UI Components**: ShadCN UI
 - **State Management**: Zustand
 - **Icons**: Lucide React
-- **Form Handling**: React Hook Form + Zod (ready for future use)
-- **UI Components**: Radix UI primitives
+- **Testing**: Cypress
+- **Forms**: React Hook Form + Zod (available)
 
-## 📦 Installation
+## 📦 Installation & Setup
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd demo-app
-```
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd demo-app
+   ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-3. Run the development server:
-```bash
-npm run dev
-```
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. **Open in browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 🏗️ Project Structure
+## 🧪 Running Tests
 
-```
-src/
-├── app/                    # Next.js app router
-│   ├── dashboard/         # Main dashboard page
-│   ├── globals.css        # Global styles
-│   └── page.tsx           # Home page (redirects to dashboard)
-├── components/            # React components
-│   ├── ui/               # Reusable UI components
-│   ├── BorrowerPipeline.tsx
-│   ├── BorrowerDetail.tsx
-│   └── BrokerOverview.tsx
-├── lib/                  # Utility functions
-│   └── utils.ts
-├── services/             # API services
-│   └── api.ts
-├── store/                # State management
-│   └── useAppStore.ts
-└── types/                # TypeScript type definitions
-    └── index.ts
-```
+### Cypress Tests
 
-## 🎯 Key Components
+1. **Open Cypress Test Runner**
+   ```bash
+   npm run cypress:open
+   ```
 
-### BorrowerPipeline (Left Panel)
-- Tabs for different borrower statuses
-- Borrower cards with name, loan type, amount, and status
-- F-SANATISED ACTIVE radio group
-- Header with app name and action icons
+2. **Run Tests Headlessly**
+   ```bash
+   npm run cypress:run
+   ```
 
-### BorrowerDetail (Center Panel)
-- Borrower information header
-- AI Explainability accordion with warning flags
-- Action buttons (Request Documents, Send to Valuer, Approve)
-- Loan summary with key metrics
-- Risk signal warnings
-- Escalate to Credit Committee button
-
-### BrokerOverview (Right Panel)
-- Broker statistics (deals, approval rate, pending amount)
-- Contact buttons (Call, Email, Chat)
-- Onboarding workflow steps
-- AI Assistant toggle
-
-## 🔧 API Integration
-
-The application uses mock API endpoints that simulate real backend responses:
-
-- `GET /api/borrowers/pipeline` - Get borrower pipeline data
-- `GET /api/borrowers/{id}` - Get borrower details
-- `POST /api/borrowers/{id}/request-documents` - Request documents
-- `POST /api/borrowers/{id}/send-valuer` - Send to valuer
-- `POST /api/borrowers/{id}/approve` - Approve loan
-- `POST /api/borrowers/{id}/escalate` - Escalate to credit committee
-- `GET /api/broker/{id}` - Get broker information
-- `GET /api/onboarding/workflow` - Get onboarding workflow
+3. **Run Tests with Dev Server**
+   ```bash
+   npm run test:e2e
+   ```
 
 ## 📱 Responsive Design
 
 - **Desktop**: 3-column grid layout
-- **Mobile**: Single column stacked layout
-- **Tablet**: Responsive breakpoints for optimal viewing
+- **Mobile**: Stacked layout with collapsible broker overview
+- **Tablet**: Responsive grid that adapts to screen size
 
-## 🎨 UI/UX Features
+## 🎯 Key Features
 
-- **Consistent Spacing**: Using Tailwind's spacing scale
-- **Status Indicators**: Color-coded badges for different statuses
-- **Interactive Elements**: Hover states and transitions
-- **Loading States**: Proper loading indicators
-- **Error Handling**: Graceful error states
+### Borrower Pipeline
+- Real-time tab switching between loan statuses
+- Interactive borrower cards with hover effects
+- Status badges with appropriate colors
+- Radio group for F-SANATISED ACTIVE options
 
-## 🧪 Testing
+### Borrower Details
+- Comprehensive borrower information display
+- Expandable AI explainability section
+- Action buttons with console logging
+- Risk signal warnings with visual indicators
+- Prominent escalation button
 
-The application is ready for testing with:
-- **E2E Testing**: Can be tested with Playwright or Cypress
-- **Component Testing**: React Testing Library ready
-- **API Testing**: Mock endpoints for testing
+### Broker Overview
+- Broker statistics with visual hierarchy
+- Functional contact buttons with logging
+- Workflow progress with completion markers
+- AI assistant toggle functionality
 
-## 🚀 Deployment
+## 🔧 Development
 
-The application can be deployed to:
-- **Vercel**: Optimized for Next.js
-- **Netlify**: Static site generation
-- **AWS Amplify**: Full-stack deployment
+### Project Structure
+```
+src/
+├── app/                 # Next.js app router
+│   ├── dashboard/       # Main dashboard page
+│   ├── globals.css      # Global styles
+│   └── layout.tsx       # Root layout
+├── components/          # React components
+│   ├── ui/             # ShadCN UI components
+│   ├── BorrowerPipeline.tsx
+│   ├── BorrowerDetail.tsx
+│   └── BrokerOverview.tsx
+├── services/           # API services
+├── store/              # Zustand state management
+└── types/              # TypeScript type definitions
+```
 
-## 📝 Future Enhancements
+### Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run cypress:open` - Open Cypress test runner
+- `npm run cypress:run` - Run Cypress tests headlessly
+- `npm run test:e2e` - Run tests with dev server
 
-- [ ] Add authentication and role-based access
-- [ ] Implement real API integration
-- [ ] Add form validation with React Hook Form + Zod
-- [ ] Add unit and integration tests
-- [ ] Implement real-time updates
-- [ ] Add dark mode support
-- [ ] Add accessibility improvements
+## 🎨 Design System
+
+The application uses a comprehensive design system with:
+- **Color Palette**: CSS custom properties for consistent theming
+- **Typography**: Consistent font sizes and weights
+- **Spacing**: Tailwind's spacing scale
+- **Components**: Reusable UI components from ShadCN
+- **Icons**: Lucide React icon library
+
+## 📊 Mock Data
+
+The application includes realistic mock data for:
+- Borrower pipeline with different statuses
+- Detailed borrower information
+- Broker statistics and workflow
+- AI flags and risk signals
+
+## 🚀 Performance
+
+- **Optimized Build**: Next.js with Turbopack
+- **Efficient Rendering**: React 19 with optimized components
+- **Fast Loading**: Tailwind CSS with purged unused styles
+- **Responsive Images**: Next.js image optimization
+
+## 🔒 Security
+
+- **Type Safety**: Full TypeScript implementation
+- **Input Validation**: Zod schema validation (available)
+- **XSS Protection**: React's built-in XSS protection
+- **Secure Headers**: Next.js security headers
+
+## 📈 Future Enhancements
+
+- Authentication and role-based access control
+- Real API integration
+- Advanced filtering and search
+- Data visualization and charts
+- Real-time updates with WebSocket
+- Offline support with service workers
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Add tests if applicable
+4. Add tests for new functionality
 5. Submit a pull request
 
 ## 📄 License

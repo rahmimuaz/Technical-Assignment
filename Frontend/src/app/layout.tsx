@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DemoApp - Frontend Developer Task",
+  title: "LoanTracker AI | Application",
   description: "A modern React application for managing borrower pipelines and loan processing workflows",
 };
 

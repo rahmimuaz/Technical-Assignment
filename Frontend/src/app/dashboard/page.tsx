@@ -14,7 +14,7 @@ const DashboardPage: React.FC = () => {
       <header className="border-b border-border bg-card shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-foreground">DemoApp</h1>
+            <h1 className="text-2xl font-bold text-foreground">LoanTracker AI</h1>
             <div className="flex items-center space-x-4">
               <Search data-testid="search-icon" className="h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
               <HelpCircle data-testid="help-icon" className="h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
